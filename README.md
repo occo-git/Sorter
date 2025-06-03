@@ -155,9 +155,9 @@ Step 2: Sorting and Saving to Temporary Files
 
 Step 3: Multi-way Merge
 
-            guid1.tmp   guid2.tmp   guid3.tmp   guid4.tmp
-               |            |           |           |
-               v            v           v           v
+              guid1.tmp   guid2.tmp   guid3.tmp   guid4.tmp
+                 |           |           |           |
+                 v           v           v           v
         +-------------------------------------------------------+
         |  Multi-way merge sorted files:                        |
         |  1. Read the first record from each file              |
