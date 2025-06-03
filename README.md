@@ -1,4 +1,4 @@
-# FileProcessingApp
+# FileProcessingApp.sln
 
 ## Project structure:
     
