@@ -53,7 +53,17 @@ Press **`G`** to start generating files with the specified parameters:
         
         Press any key to continue...
 
-As a result, the program has generated `d:/_data1.txt`
+As a result, the program has generated `d:/_data1.txt` containing random records in the specified format `<Number>. <String>`:
+
+    133495000. Minima ipsa sint qui debitis ad.
+    1355726170. Voluptate minus dignissimos quia.
+    543623703. Nesciunt cumque dolor et nesciunt consequatur quo.
+    483568311. Cupiditate omnis quibusdam quod sed numquam maiores.
+    280774683. Hic non libero deleniti.
+    594304100. Et molestias nam aperiam qui vel laborum.
+    1725587880. Quos sit.
+    147075468. Qui aut.
+    ...
 
 File count > 1 means that multiple files will be generated _asyncronously_:
 
@@ -117,8 +127,23 @@ Press **`S`** to start sorting files with the specified parameters:
         
         Press any key to continue...
 
-As a result, the program has created `d:\_data1_sorted_53d96239e0764623ad5b1e21056ba67e.txt`, the ordered version of `d:\_data1.txt`
+As a result, the program has created the ordered version of `d:\_data1.txt`
 
+`d:\_data1_sorted_53d96239e0764623ad5b1e21056ba67e.txt`:
+    
+    1626488818. A a a et id voluptas.
+    1261667396. A a a nihil dolorem eum doloremque illo.
+    1548703040. A a a officia.
+    411753444. A a a ratione tenetur dicta mollitia eius alias.
+    789064575. A a ab vel quia.
+    253006587. A a accusamus accusamus.
+    2000168013. A a accusamus dolores sint magnam.
+    1632854993. A a accusamus et.
+    40284948. A a adipisci maiores aut facere numquam veritatis repudiandae.
+    2091809826. A a adipisci nobis.
+    1587846566. A a alias iste debitis mollitia sapiente doloremque.
+    ...
+    
 File count > 1 means that multiple files will be sorted _asyncronously_:
 
         d:/_data1_1.txt
