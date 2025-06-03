@@ -22,7 +22,7 @@
 ## Generate files:
 Set **`TestFileGenerator`** as startup project
 
-Run the application to generate test files
+Run the application to generate test files:
 
         Test file generator
         File name: d:/_data1
@@ -34,7 +34,7 @@ Run the application to generate test files
         G - Generate
         Q - Quit
         
-Press **`G`** to start generating files with the specified parameters.
+Press **`G`** to start generating files with the specified parameters:
 
         Generate 1 file: d:/_data1, Size = 1073741824
         File deleted: d:/_data1.txt
@@ -65,7 +65,7 @@ File count > 1 means that multiple files will be generated _asyncronously_:
 ## Sort files:
 Set **`Sorter`** as startup project
 
-Run the application to generate test files
+Run the application to generate test files:
         
         Sorter
         File name: d:/_data1
@@ -76,7 +76,7 @@ Run the application to generate test files
         S - Sort
         Q - Quit
 
-Press **`S`** to start sorting files with the specified parameters.
+Press **`S`** to start sorting files with the specified parameters:
 
         Sort 1 file: d:/_data1
         Processing file: d:/_data1.txt
@@ -126,22 +126,25 @@ File count > 1 means that multiple files will be sorted _asyncronously_:
         d:/_data1_3.txt
         ....
 
-## Algorithm:
+## Sorting algorithm:
+
+`Hash` is the property of a record (data model) for sorting and comparison
+
 Step 1: Splitting
 
-                        Input file (1 GB)
-                                |
-                                v
-                        +-------------------+
-                        |   Split into      |
-                        |   4 chunks        |
-                        +-------------------+
-                                |
-                                v
-        +---------+  +---------+  +---------+  +---------+
-        | Chunk 1 |  | Chunk 2 |  | Chunk 3 |  | Chunk 4 |
-        | (256MB) |  | (256MB) |  | (256MB) |  | (256MB) |
-        +---------+  +---------+  +---------+  +---------+
+                            Input file (1 GB)
+                                    |
+                                    v
+                       +-------------------------+
+                       | Sequential parsing data |
+                       | into record chunks      |
+                       +-------------------------+
+                                    |
+                                    v
+            +---------+  +---------+  +---------+  +---------+
+            | Chunk 1 |  | Chunk 2 |  | Chunk 3 |  | Chunk 4 |
+            | (256MB) |  | (256MB) |  | (256MB) |  | (256MB) |
+            +---------+  +---------+  +---------+  +---------+
 
 Step 2: Sorting and Saving to Temporary Files
         
@@ -166,6 +169,10 @@ Step 3: Multi-way Merge
         |                                                       |
         |          ↓ Sequential batch recording ↓               |
         +-------------------------------------------------------+
-                                |
-                                v
+                                  |
+                                  v
                       Output file (1 GB, sorted)
+                                  
+                     +--------------------------+
+                     | Deleting temporary files |
+                     +--------------------------+
