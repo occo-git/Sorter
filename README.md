@@ -125,3 +125,47 @@ File count > 1 means that multiple files will be sorted _asyncronously_:
         d:/_data1_2.txt
         d:/_data1_3.txt
         ....
+
+## Algorithm:
+Step 1: Splitting
+
+                        Input file (1 GB)
+                                |
+                                v
+                        +-------------------+
+                        |   Split into      |
+                        |   4 chunks        |
+                        +-------------------+
+                                |
+                                v
+        +---------+  +---------+  +---------+  +---------+
+        | Chunk 1 |  | Chunk 2 |  | Chunk 3 |  | Chunk 4 |
+        | (256MB) |  | (256MB) |  | (256MB) |  | (256MB) |
+        +---------+  +---------+  +---------+  +---------+
+
+Step 2: Sorting and Saving to Temporary Files
+        
+        Chunk 1 --> Sort in memory by Hash --> guid1.tmp (sorted)
+        Chunk 2 --> Sort in memory by Hash --> guid2.tmp (sorted)
+        Chunk 3 --> Sort in memory by Hash --> guid3.tmp (sorted)
+        Chunk 4 --> Sort in memory by Hash --> guid4.tmp (sorted)
+
+Step 3: Multi-way Merge
+
+            guid1.tmp   guid2.tmp   guid3.tmp   guid4.tmp
+               |            |           |           |
+               v            v           v           v
+        +-------------------------------------------------------+
+        |  Multi-way merge sorted files:                        |
+        |  1. Read the first record from each file              |
+        |  2. Select the minimum record by Hash                 |
+        |  3. Read the following record                         |
+        |  4. Batch selected records in memory                  |
+        |  5. Write batch to the resulting file                 |
+        |  6. Repeat the process until all files are exhausted  |
+        |                                                       |
+        |          ↓ Sequential batch recording ↓               |
+        +-------------------------------------------------------+
+                                |
+                                v
+                      Output file (1 GB, sorted)
