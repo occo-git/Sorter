@@ -28,7 +28,7 @@ namespace TestFileGenerator
                 IChunkGenerator generator = new MyChunkGenerator();
                 IFileGeneration fileGeneration = new MyFileGeneration(storage, generator, chunkSize);
 
-                tasks.Add(fileGeneration.Generate($"{fileName}{i + 1}.txt", fileSize)); // 1 GB
+                tasks.Add(fileGeneration.Generate($"{fileName}_{i + 1}.txt", fileSize)); // 1 GB
             }
             await Task.WhenAll(tasks);
         }

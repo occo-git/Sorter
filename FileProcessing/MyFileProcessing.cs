@@ -150,7 +150,7 @@ namespace FileProcessing
             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
             string directory = Path.GetDirectoryName(fileName) ?? string.Empty;
             Guid id = Guid.NewGuid();
-            return Path.Combine(directory, $"{fileNameWithoutExtension}_ordered_{id:N}.txt");
+            return Path.Combine(directory, $"{fileNameWithoutExtension}_sorted_{id:N}.txt");
         }
 
         /// <summary>

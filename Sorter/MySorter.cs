@@ -6,7 +6,7 @@ namespace Sorter
 {
     internal class MySorter
     {
-        public async Task Sort(string fileName, long fileSize)
+        public async Task Sort(string fileName)
         {
             int chunkSize = 256 * 1024 * 1024; // 256 MB
             IDataStorage storage = new LocalFileStorage();
@@ -20,7 +20,7 @@ namespace Sorter
             //await fileCheck.CheckData(resultFileName);
         }
 
-        public async Task SotrFiles(string fileName, int count, long fileSize)
+        public async Task SortFiles(string fileName, int count)
         {
             int chunkSize = 256 * 1024 * 1024; // 256 MB
             IDataStorage storage = new LocalFileStorage();
@@ -30,7 +30,7 @@ namespace Sorter
             {
                 IChunkParser parser = new MyChunkParser();
                 IFileProcessing fileProcessing = new MyFileProcessing(storage, parser, chunkSize);
-                tasks.Add(fileProcessing.ProcessFile($"{fileName}{i + 1}.txt"));
+                tasks.Add(fileProcessing.ProcessFile($"{fileName}_{i + 1}.txt"));
             }
             await Task.WhenAll(tasks);
         }

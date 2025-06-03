@@ -18,7 +18,7 @@ namespace FileDataSorter.Benchmark
         public async Task CheckTestFile_1()
         {
             int chunkSize = 256 * 1024 * 1024; // 256 MB
-            string filePath = "d:/mark1GB_ordered.txt";
+            string filePath = "d:/mark1GB_sorted.txt";
 
             IFileCheck fileCheck = new MyFileCheck(storage, parser, chunkSize);
             await fileCheck.CheckData(filePath);
