@@ -13,6 +13,115 @@
 
 **`FileProcessing.Tests`** - (class lib) - unit tests for the main processing logic 
 
-**`Sorter`** - (console app) - the application for sorting files
+**`Sorter`** - (console app) - the application for **sorting** files
 
-**`TestFileGenerator`** - (console app) - the application for generating test files
+**`TestFileGenerator`** - (console app) - the application for **generating** test files
+
+
+
+## Generate files:
+Set **`TestFileGenerator`** as startup project
+
+Run the application to generate test files
+
+        Test file generator
+        File name: d:/_data1
+        File size: 1073741824 B
+        File count: 1
+        
+        Choose an option:
+        N - New parameters
+        G - Generate
+        Q - Quit
+        
+Press **`G`** to start generating files with the specified parameters.
+
+        Generate 1 file: d:/_data1, Size = 1073741824
+        File deleted: d:/_data1.txt
+        Generating file: d:/_data1.txt
+        Generate chunk: Size = 268435456, Iteration = 0/4
+                Write data: Size = 268435450
+        Generate chunk: Size = 268435456, Iteration = 1/4
+                Write data: Size = 268435443
+        Generate chunk: Size = 268435456, Iteration = 2/4
+                Write data: Size = 268435434
+        Generate chunk: Size = 268435456, Iteration = 3/4
+                Write data: Size = 268435445
+        Generate chunk: Size = 52, Iteration = 4/4
+                Write data: Size = 23
+        Elapsed time: 12402 ms
+        
+        Press any key to continue...
+
+As a result, the program has generated `d:/_data1.txt`
+
+File count > 1 means that multiple files will be generated _asyncronously_:
+
+        d:/_data1_1.txt
+        d:/_data1_2.txt
+        d:/_data1_3.txt
+        ....
+        
+## Sort files:
+Set **`Sorter`** as startup project
+
+Run the application to generate test files
+        
+        Sorter
+        File name: d:/_data1
+        File count: 1
+        
+        Choose an option:
+        N - New parameters
+        S - Sort
+        Q - Quit
+
+Press **`S`** to start sorting files with the specified parameters.
+
+        Sort 1 file: d:/_data1
+        Processing file: d:/_data1.txt
+        Processing chunk 0: Bytes = 268435450
+                Ordered chunk data by Hash: Lines = 5673934
+                Write data: Size = 268435450
+                Temp file saved: C:\Users\Alexander\AppData\Local\Temp\chunk_724b265d2297484cbe3318a8db377a64.tmp
+        Processing chunk 1: Bytes = 268435443
+                Ordered chunk data by Hash: Lines = 5672668
+                Write data: Size = 268435443
+                Temp file saved: C:\Users\Alexander\AppData\Local\Temp\chunk_c1c5f5c1a2814645872357440bc3782c.tmp
+        Processing chunk 2: Bytes = 268435434
+                Ordered chunk data by Hash: Lines = 5675051
+                Write data: Size = 268435434
+                Temp file saved: C:\Users\Alexander\AppData\Local\Temp\chunk_20d9172133974246a7b8deeec3cd8820.tmp
+        Processing chunk 3: Bytes = 268435445
+                Ordered chunk data by Hash: Lines = 5672816
+                Write data: Size = 268435445
+                Temp file saved: C:\Users\Alexander\AppData\Local\Temp\chunk_c7eb0362adfa4af0946c530aff270171.tmp
+        Processing chunk 4: Bytes = 23
+                Ordered chunk data by Hash: Lines = 1
+                Write data: Size = 23
+                Temp file saved: C:\Users\Alexander\AppData\Local\Temp\chunk_ddef069a79a94225b0172e88c1435280.tmp
+        Merging files
+                Write data: Size = 268435435
+                Write data: Size = 268435410
+                Write data: Size = 268435398
+                Write data: Size = 268435452
+                Write data: Size = 100
+        >> File created: d:\_data1_sorted_53d96239e0764623ad5b1e21056ba67e.txt
+        Deleting temp files
+        File deleted: C:\Users\Alexander\AppData\Local\Temp\chunk_724b265d2297484cbe3318a8db377a64.tmp
+        File deleted: C:\Users\Alexander\AppData\Local\Temp\chunk_c1c5f5c1a2814645872357440bc3782c.tmp
+        File deleted: C:\Users\Alexander\AppData\Local\Temp\chunk_20d9172133974246a7b8deeec3cd8820.tmp
+        File deleted: C:\Users\Alexander\AppData\Local\Temp\chunk_c7eb0362adfa4af0946c530aff270171.tmp
+        File deleted: C:\Users\Alexander\AppData\Local\Temp\chunk_ddef069a79a94225b0172e88c1435280.tmp
+        Elapsed time: 97741 ms
+        
+        Press any key to continue...
+
+As a result, the program has created `d:\_data1_sorted_53d96239e0764623ad5b1e21056ba67e.txt`, the ordered version of `d:\_data1.txt`
+
+File count > 1 means that multiple files will be sorted _asyncronously_:
+
+        d:/_data1_1.txt
+        d:/_data1_2.txt
+        d:/_data1_3.txt
+        ....
