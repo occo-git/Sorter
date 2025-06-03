@@ -51,7 +51,7 @@ while (true)
         if (fileCount == 1)
         {
             Console.WriteLine($"\nSort 1 file: {fileName}");
-            await sorter.Sort("d:/_data1"); // sort 1 file
+            await sorter.Sort(fileName); // sort 1 file
         }
         else
         {

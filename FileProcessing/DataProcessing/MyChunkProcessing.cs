@@ -83,6 +83,9 @@ namespace FileProcessing.DataProcessing
         /// <returns>An async enumerable of IDataModel representing the ordered sequence of minimum records from each chunk.</returns>
         private async IAsyncEnumerable<IDataModel> MergeChunks(IEnumerable<Stream> streams)
         {
+            int mergingChunkSize = ChunkSize / streams.Count();
+            Console.WriteLine($"Merging chunk size: {mergingChunkSize}");
+
             if (streams == null || !streams.Any())
                 throw new ArgumentException("No streams provided for merging chunks.", nameof(streams));
 
@@ -92,7 +95,7 @@ namespace FileProcessing.DataProcessing
             // Initialize chunk enumerators for each stream
             foreach (var stream in streams)
             {
-                var chunks = new ChunkEnumerator(stream, _chunkParser, ChunkSize);
+                var chunks = new ChunkEnumerator(stream, _chunkParser, mergingChunkSize);
                 chunkEnumerators.Add(chunks);
 
                 // Get the first chunk from each enumerator
